@@ -1,17 +1,8 @@
 import Head from 'next/head';
-import Image from 'next/image';
-
-import styles from '@/styles/Home.module.css';
-import { lazy, Suspense } from 'react';
-import SideBar from '@/components/Footer';
-
-import About from './about';
-import Team from './team';
-import Publication from './publication';
-import Style from './style';
-import Project from './project';
-
+import 'normalize.css';
+import store from '@/store';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import { Provider } from 'react-redux';
 export default function Home() {
   return (
     <>
@@ -22,7 +13,9 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main></main>
+      <main>
+        <Provider store={store}></Provider>
+      </main>
     </>
   );
 }

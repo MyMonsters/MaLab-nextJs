@@ -8,12 +8,14 @@ import Style from './style';
 import Team from './team';
 import { appWithTranslation } from 'next-i18next';
 import App from 'next/app';
+import Header from '@/components/Header';
 // import 'antd/dist/reset.css';
 
 const app = appWithTranslation(({ Component, pageProps }) => {
   return (
     <div>
       <Component {...pageProps} />
+      <Header />
       <Home />
       <About />
       <News />
