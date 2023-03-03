@@ -17,7 +17,7 @@ export const HeaderRight = styled.div`
   }
   .header-item {
     cursor: pointer;
-
+    font-family: Verdana, Geneva, Tahoma, 微软黑体;
     input {
       position: absolute;
       opacity: 0;
