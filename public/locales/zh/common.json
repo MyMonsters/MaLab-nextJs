@@ -22,8 +22,9 @@
     "undergraduate": "本科",
     "principal": "PI",
     "ma": "教授",
-    "professor": "Co-PI",
+    "PI": "Co-PI",
     "maNav": "[个人网站]",
     "message": "留言",
-    "style": "团队风采"
+    "style": "团队风采",
+    "machao": "马超"
   }

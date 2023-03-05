@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 export const AboutWrapper = styled.div`
-  margin-left: 5rem;
+  margin: 5%;
   p {
     font-size: x-large;
     line-height: 1.8;

@@ -20,12 +20,20 @@ const News = memo(function News() {
               return (
                 <Link href="" className="News-item" key={item.id}>
                   <Row justify={'center'}>
-                    <Col lg={14} offset={1} md={14} sm={24}>
-                      <div className="date">{item.date}</div>
+                    <Col
+                      lg={{ span: 14, offset: 1 }}
+                      md={{ span: 14, offset: 1 }}
+                      sm={{ span: 23, offset: 2 }}
+                    >
+                      <div className="date">{item.time}</div>
                       <div className="title">{item.ENtitle}</div>
-                      <div className="title">{item.CNtitle}</div>
+                      {/* <div className="title">{item.CNtitle}</div> */}
                     </Col>
-                    <Col lg={6} md={6} offset={2} sm={22}>
+                    <Col
+                      lg={{ span: 7, offset: 2 }}
+                      md={{ span: 6, offset: 2 }}
+                      sm={{ span: 23, offset: 2 }}
+                    >
                       <div className="img">
                         <Image
                           src="/n2.jpg"
@@ -35,7 +43,7 @@ const News = memo(function News() {
                           width={1800}
                           height={400}
                           style={{
-                            width: '100%',
+                            width: '93%',
                             height: 'auto',
                           }}
                           alt=""

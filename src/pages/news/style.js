@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 export const NewsWrapper = styled.div`
-  margin: 0 5rem;
+  /* margin: 0 5rem; */
+  margin: 5%;
+
   .News-title {
     font-weight: 100;
     font-family: Gill Sans, Gill Sans MT, Calibri, Trebuchet MS, sans-serif;
@@ -11,6 +13,9 @@ export const NewsWrapper = styled.div`
   }
   .News-list {
     margin: 30px 0;
+    font-family: 'Times New Roman', Times, serif;
+  }
+  .title {
     font-family: 'Times New Roman', Times, serif;
   }
   .News-item {
@@ -42,7 +47,10 @@ export const NewsWrapper = styled.div`
     font-size: 1.2rem;
   }
   .title {
-    font-size: 2rem;
+    font-size: 1.9rem;
     text-align: left;
+  }
+  .img {
+    margin-top: 4%;
   }
 `;

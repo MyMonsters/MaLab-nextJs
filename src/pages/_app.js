@@ -6,6 +6,7 @@ import Project from './project';
 import Publication from './publication';
 import Style from './style';
 import Team from './team';
+import nextI18NextConfig from '../../next-i18next.config';
 import { appWithTranslation } from 'next-i18next';
 import App from 'next/app';
 import Header from '@/components/Header';
@@ -16,7 +17,6 @@ const { wrapper } = require('../lib/store');
 const app = appWithTranslation(({ Component, pageProps }) => {
   return (
     <div>
-      
       <Component {...pageProps} />
       {/* <Pokemon /> */}
       <Header />
@@ -29,6 +29,6 @@ const app = appWithTranslation(({ Component, pageProps }) => {
       <Publication />
     </div>
   );
-});
+}, nextI18NextConfig);
 
 export default wrapper.withRedux(app);
