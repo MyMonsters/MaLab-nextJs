@@ -1,31 +1,44 @@
-import Head from "next/head";
-
-
-export default function ShowTeam(
-  props
-) {
+import { myLoader } from '@/utils/loader';
+import { Col, Row } from 'antd';
+import Image from 'next/image';
+import React, { memo, useState } from 'react';
+import { showTeamWrapper } from './style';
+export default memo(function ShowTeam(props) {
+  const { teamlist, title } = props;
+  // const [teamlist, setteamlist] = useState(props.teamlist);
+  // const [title, settitle] = useState(props.title);
+  console.log(teamlist);
   return (
-    <div className={styles.container}>
-      <Head>
-        <link rel="icon" href="/favicon.ico" />
-        <meta
-          name="description"
-          content="Learn how to build a personal website using Next.js"
-        />
-        <meta
-          property="og:image"
-          content={`https://og-image.vercel.app/${encodeURI(
-            siteTitle
-          )}.png?theme=light&md=0&fontSize=75px&images=https%3A%2F%2Fassets.zeit.co%2Fimage%2Fupload%2Ffront%2Fassets%2Fdesign%2Fnextjs-black-logo.svg`}
-        />
-        <meta name="og:title" content={siteTitle} />
-        <meta name="twitter:card" content="summary_large_image" />
-      </Head>
-      <header className={styles.header}>
-       
-      </header>
-      <main></main>
-      
-    </div>
+    <showTeamWrapper>
+      <h2>{title}</h2>
+      <hr />
+      <Row gutter={{lg:90}}>
+        {teamlist.data.map((item, index) => {
+          return (
+            
+              <Col xs={24} md={12} lg={6} key={item.id}>
+                <div className="img-container">
+                  <Image
+                    loader={myLoader}
+                    loading="lazy"
+                    width={100}
+                    height={100}
+                    src="ma.jpg"
+                    className="img"
+                    style={{
+                      width: '100%',
+                      height: 'auto',
+                    }}
+                    alt=""
+                  />
+                </div>
+                
+                {item.ENname}
+              </Col>
+            
+          );
+        })}
+      </Row>
+    </showTeamWrapper>
   );
-}
+});
