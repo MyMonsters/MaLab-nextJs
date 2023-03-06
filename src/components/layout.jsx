@@ -1,16 +1,12 @@
-import Head from "next/head";
-import Image from "next/image";
-import styles from "./layout.module.css";
-import utilStyles from "@/pages/style/utils.module.css";
-import Link from "next/link";
+import Head from 'next/head';
+import Image from 'next/image';
+import styles from './layout.module.css';
+import Link from 'next/link';
 
-const name = "RTK-Query SSR example";
+const name = 'RTK-Query SSR example';
 export const siteTitle = name;
 
-export default function Layout({
-  children,
-  home,
-}) {
+export default function Layout({ children, home }) {
   return (
     <div className={styles.container}>
       <Head>

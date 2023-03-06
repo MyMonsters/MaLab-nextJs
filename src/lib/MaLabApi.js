@@ -44,6 +44,9 @@ export const MaLabApi = createApi({
     getNews: builder.query({
       query: () => `/deeptime/getNews`,
     }),
+    getProject: builder.query({
+      query: () => `/deeptime/getProject`,
+    }),
   }),
 });
 
@@ -56,6 +59,7 @@ export const {
   useGetMembers3Query,
   useGetMembers4Query,
   useGetNewsQuery,
+  useGetProjectQuery,
   util: { getRunningQueriesThunk },
 } = MaLabApi;
 
@@ -69,4 +73,5 @@ export const {
   getMembers3,
   getMembers4,
   getNews,
+  getProject,
 } = MaLabApi.endpoints;

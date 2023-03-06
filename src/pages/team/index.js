@@ -1,11 +1,17 @@
-import { useGetMembers1Query } from '@/lib/MaLabApi';
-import { Col, Divider, Row } from 'antd';
+import {
+  useGetMembers1Query,
+  useGetMembers2Query,
+  useGetMembers3Query,
+  useGetMembers4Query,
+} from '@/lib/MaLabApi';
+import { Col, Row } from 'antd';
 import React, { memo } from 'react';
 import { useTranslation } from 'next-i18next';
 import { TeamWrapper } from './style';
 import Image from 'next/image';
 import { myLoader } from '@/utils/loader';
 import ShowTeam from '@/components/base-ui/ShowTeam';
+import Teamstyle from '@/components/teamStyle/Teamstyle';
 
 const Team = memo(function Team() {
   const {
@@ -17,26 +23,19 @@ const Team = memo(function Team() {
     data: PhdData,
     err2,
     isLoading: PhdisLoading,
-  } = useGetMembers1Query();
+  } = useGetMembers2Query();
   const {
     data: MastersData,
     err3,
     isLoading: MastersisLoading,
-  } = useGetMembers1Query();
+  } = useGetMembers3Query();
   const {
     data: UndergraduatesData,
     err4,
     isLoading: UndergraduaresisLoading,
-  } = useGetMembers1Query();
+  } = useGetMembers4Query();
   const { t, i18n } = useTranslation('common');
   // console.log(t, i18n);
-  const mountTeamcomp = (isLoading, teamlist) => {
-    if (isLoading) {
-      return '加载中';
-    } else {
-      return <ShowTeam isLoading={isLoading} teamlist={teamlist} />;
-    }
-  };
   return (
     <TeamWrapper>
       <h1>{t('team')}</h1>
@@ -44,7 +43,7 @@ const Team = memo(function Team() {
         <h2>{t('principal')}</h2>
         <hr />
         <Row gutter={{ xs: 30, md: 60, lg: 90 }}>
-          <Col xs={24} lg={{ span: 6, offset: 9 }}>
+          <Col xs={24} md={{ span: 12, offset: 6 }} lg={{ span: 6, offset: 9 }}>
             <div className="img-container">
               <Image
                 loader={myLoader}
@@ -71,7 +70,23 @@ const Team = memo(function Team() {
           <div> Email: machao@cdut.edu.cn</div>
         </div>
       </div>
-      {PhdisLoading ? '加载中' : <ShowTeam teamlist={PhdData} title={'PHD'} />}
+      {TeachersisLoading ? (
+        '加载中'
+      ) : (
+        <ShowTeam teamlist={TeachersData} title={'Co-PI'} />
+      )}
+      {PhdisLoading ? '加载中' : <ShowTeam teamlist={PhdData} title={'phd'} />}
+      {MastersisLoading ? (
+        '加载中'
+      ) : (
+        <ShowTeam teamlist={MastersData} title={'master'} />
+      )}
+      {UndergraduaresisLoading ? (
+        '加载中'
+      ) : (
+        <ShowTeam teamlist={UndergraduatesData} title={'undergraduate'} />
+      )}
+      <Teamstyle />
     </TeamWrapper>
   );
 });

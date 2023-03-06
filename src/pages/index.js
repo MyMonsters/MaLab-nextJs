@@ -1,6 +1,5 @@
 import Head from 'next/head';
 import 'normalize.css';
-import store from '@/store';
 // import pokemon from './pokemon/ssr/[name]';
 import nextI18nextConfig from 'next-i18next.config';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';

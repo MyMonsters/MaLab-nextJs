@@ -12,7 +12,7 @@ const News = memo(function News() {
   console.log(data);
   return (
     <NewsWrapper>
-      <h2 class="News-title">News</h2>
+      <h2 className="News-title">News</h2>
       <div className="News-list">
         {isLoading
           ? ''

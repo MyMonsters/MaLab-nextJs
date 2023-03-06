@@ -1,9 +1,15 @@
 import styled from 'styled-components';
 
-export const showTeamWrapper = styled.div`
+export const ShowTeamWrapper = styled.div`
+  margin-top: 100px;
   .img-container {
     width: 100%;
     margin: auto;
+  }
+  .my-text {
+    font-size: large;
+    text-align: center;
+    line-height: 1.4;
   }
   img {
     border: solid 2px;
@@ -27,12 +33,13 @@ export const showTeamWrapper = styled.div`
     box-sizing: border-box;
     /* display: inline-block; */
     /* margin: 10vh 10vw; */
-    margin: 10vh auto;
+    margin: 8vh auto;
     /* height: 80vh; */
     padding: 0;
     position: relative;
     text-align: center;
   }
+
   .img-container:before {
     border-radius: 2px;
     bottom: -2vmin;
