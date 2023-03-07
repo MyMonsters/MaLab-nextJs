@@ -10,7 +10,6 @@
     "prepare": "husky install"
   },
   "dependencies": {
-    "@next/font": "13.2.1",
     "@reduxjs/toolkit": "^1.9.3",
     "@types/node-fetch": "^2.6.2",
     "antd": "^5.2.3",

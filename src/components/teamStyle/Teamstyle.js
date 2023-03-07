@@ -11,6 +11,9 @@ export default memo(function Teamstyle() {
     { picUrl: 'card.png' },
     { picUrl: 'style.jpg' },
   ]);
+  const afterChange = (current) => {
+    setcurrentIndex(current);
+  };
   const carouselRef = useRef(null);
   const [currentIndex, setcurrentIndex] = useState(0);
   const handleImgClick = (index) => {
@@ -24,6 +27,7 @@ export default memo(function Teamstyle() {
         {t('style')}
       </h2>
       <Carousel
+        afterChange={(current) => afterChange(current)}
         effect="fade"
         arrows="true"
         ref={carouselRef}

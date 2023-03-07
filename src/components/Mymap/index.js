@@ -1,21 +1,34 @@
-import React, { memo, useRef } from 'react';
+import React, { memo, useRef, useState } from 'react';
 
 // 引入 ECharts 主模块
-import echarts from 'echarts-for-react';
+import '@/common/world';
+import ReactECharts from 'echarts-for-react';
+// import ReactEcharts from 'echarts-for-react';
+// import { MapChart } from 'echarts/charts';
 // 引入柱状图
 // import 'echarts/lib/chart/bar';
 // // 引入提示框和标题组件
 // import 'echarts/lib/component/tooltip';
 // import 'echarts/lib/component/title';
 import { MymapWrapper } from './style';
+import { useGetPointQuery } from '@/lib/MaLabApi';
+import Image from 'next/image';
 
-export default memo(function Mymap() {
+const Mymap = memo(function Mymap() {
   const myRef = useRef(null);
-  const initEcharts = () => {
-    console.log(echarts);
-    // var mychartMap = echarts.init(myRef);
-    let point = [{ pageview: 2, country: 'china' }];
-    const series = point.map((item) => {
+  const echarts = require('echarts');
+
+  const chart = echarts.init(null, null, {
+    renderer: 'svg', // 必须使用 SVG 模式
+    ssr: true, // 开启 SSR
+    width: 400, // 需要指明高和宽
+    height: 300,
+  });
+  const { data, err, isLoading } = useGetPointQuery();
+  let series = [];
+  // const [svgStr, setsvgStr] = useState('');
+  const initSeris = () => {
+    series = data.data.map((item, index) => {
       return {
         type: 'scatter',
         coordinateSystem: 'geo',
@@ -49,57 +62,71 @@ export default memo(function Mymap() {
         data: [[item.longitude, item.latitude]],
       };
     });
-    let option = {
-      backgroundColor: '',
-      // backgroundColor:'#fff',
-      tooltip: {
-        trigger: 'item',
-      },
-      legend: {
-        show: false,
-        bottom: 150,
-        width: 300,
-        height: 200,
-        textStyle: {
-          fontSize: 20,
-        },
-      },
-      geo: {
-        map: 'world',
-
-        // roam: true,
-        // roam: true,
-        zoom: 1.1,
-        label: {
-          emphasis: {
-            show: false,
-          },
-        },
-        // silent: true,
-        itemStyle: {
-          normal: {
-            // areaColor: '#004981', //地图颜色
-            areaColor: '#fff',
-            // areaColor: "black",
-            borderColor: 'black',
-          },
-          emphasis: {
-            areaColor: '#0b1c2d',
-          },
-        },
-      },
-      series: series,
-    };
-
-    // if (option && typeof option === 'object') {
-    //   mychartMap.setOption(option, true);
-    // }
-    // window.onresize = mychartMap.resize;
+    chart.setOption({ series: series });
+    svgStr = chart.renderToSVGString();
   };
-  initEcharts();
+
+  // initSeris();
+  if (!isLoading) {
+    initSeris();
+  }
+
+  const options = {
+    backgroundColor: '',
+    // backgroundColor:'#fff',
+    tooltip: {
+      trigger: 'item',
+    },
+    legend: {
+      show: false,
+      bottom: 150,
+      width: 300,
+      height: 200,
+      textStyle: {
+        fontSize: 20,
+      },
+    },
+    geo: {
+      map: 'world',
+
+      // roam: true,
+      // roam: true,
+      zoom: 1.1,
+      label: {
+        emphasis: {
+          show: false,
+        },
+      },
+      // silent: true,
+      itemStyle: {
+        normal: {
+          // areaColor: '#004981', //地图颜色
+          areaColor: '#fff',
+          // areaColor: "black",
+          borderColor: 'black',
+        },
+        emphasis: {
+          areaColor: '#0b1c2d',
+        },
+      },
+    },
+    series: series,
+  };
+
+  let svgStr = chart.renderToSVGString();
+
   return (
     <MymapWrapper>
-      <div ref={myRef}></div>
+      <div ref={myRef} id="map">
+        {/* {isLoading ? (
+          '加载中'
+        ) : (
+          <img src={`data:image/svg+xml;utf8,${encodeURIComponent(svgStr)}`} />
+        )} */}
+        <ReactECharts option={options} />;{/* {isLoading ? '' : initSeris()} */}
+      </div>
     </MymapWrapper>
   );
 });
+
+export default Mymap;

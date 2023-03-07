@@ -29,7 +29,7 @@ export const TeamWrapper = styled.div`
   }
   .img-container {
     background-color: #ddc;
-    border: solid 5vmin #eee;
+    border: solid 3vmin #eee;
     border-bottom-color: #fff;
     border-left-color: #eee;
     border-radius: 2px;
