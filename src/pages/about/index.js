@@ -10,7 +10,7 @@ const About = memo(function About(props) {
   const { t, i18n } = useTranslation('common');
 
   return (
-    <AboutWrapper>
+    <AboutWrapper id="about">
       <Row gutter={{ xs: 30, sm: 60, md: 90 }}>
         <Col className="gutter-row" xs={24} sm={24} md={24} lg={11}>
           <div>

@@ -37,7 +37,7 @@ const Team = memo(function Team() {
   const { t, i18n } = useTranslation('common');
   // console.log(t, i18n);
   return (
-    <TeamWrapper>
+    <TeamWrapper id="team">
       <h1>{t('team')}</h1>
       <div>
         <h2>{t('principal')}</h2>

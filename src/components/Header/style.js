@@ -1,17 +1,47 @@
 import styled from 'styled-components';
 export const HeaderWrapper = styled.div`
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  background-color: #f8f9fa;
+  z-index: 401;
   height: 64px;
   display: flex;
   line-height: 64px;
+  .ant-dropdown-open {
+    font-size: 30px;
+    width: 300px;
+  }
 `;
 
 export const HeaderLeft = styled.div`
   width: 40%;
+  .myicon {
+    margin: auto 5% auto 5%;
+  }
 `;
 export const HeaderRight = styled.div`
   width: 60%;
   display: flex;
+
   justify-content: space-around;
+  .toggle-btn-menu {
+    display: none;
+    line-height: 64px;
+  }
+  .icon {
+    margin-top: 18px;
+    cursor: pointer;
+  }
+  @media screen and (max-width: 1000px) {
+    .header-item {
+      display: none;
+    }
+    .toggle-btn-menu {
+      display: block;
+    }
+  }
   .active {
     border-bottom: 2px solid black;
   }
@@ -141,4 +171,11 @@ export const HeaderRight = styled.div`
     background-color: #2f2f2f !important;
     color: rgb(177, 168, 168) !important;
   }
+
+  /* .ant-affix {
+    font-size: large;
+  } */
+  /* :where(.css-dev-only-do-not-override-10ed4xt)[class*=' ant-affix'] {
+    font-size: 18px;
+  } */
 `;

@@ -9,7 +9,7 @@ const Project = memo(function Project() {
   const { data, err, isLoading } = useGetProjectQuery();
   console.log(data);
   return (
-    <ProjectWrapper>
+    <ProjectWrapper id="project">
       <h1 className="title">{t('project')}</h1>
       <div className="line-wrapper">
         <ul className="timeline">

@@ -5,6 +5,15 @@ import nextI18nextConfig from 'next-i18next.config';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 import Layout from '@/components/layout';
+import Header from '@/components/Header';
+import About from './about';
+import MyHome from './home';
+import News from './news';
+import Project from './project';
+import Publication from './publication';
+import Team from './team';
+import Footer from '@/components/Footer';
+
 export default function Home(props) {
   return (
     <div>
@@ -15,7 +24,16 @@ export default function Home(props) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main></main>
+      <main>
+        <Header />
+        <MyHome />
+        <About />
+        <News />
+        <Team />
+        <Project />
+        <Publication />
+        <Footer />
+      </main>
     </div>
   );
 }

@@ -11,14 +11,18 @@ const News = memo(function News() {
   const { data, err, isLoading } = useGetNewsQuery();
   console.log(data);
   return (
-    <NewsWrapper>
+    <NewsWrapper id="news">
       <h2 className="News-title">News</h2>
       <div className="News-list">
         {isLoading
           ? ''
           : data.data.map((item, index) => {
               return (
-                <Link href="" className="News-item" key={item.id}>
+                <Link
+                  href={{ pathname: `/news/Detail/${item.id}` }}
+                  className="News-item"
+                  key={item.id}
+                >
                   <Row justify={'center'}>
                     <Col
                       lg={{ span: 14, offset: 1 }}

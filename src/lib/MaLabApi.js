@@ -53,6 +53,9 @@ export const MaLabApi = createApi({
     getUserIP: builder.query({
       query: () => '/deeptime/getUserIP',
     }),
+    getNewsById: builder.query({
+      query: (id) => `/deeptime/getNewsById/${id}`,
+    }),
   }),
 });
 
@@ -68,6 +71,7 @@ export const {
   useGetProjectQuery,
   useGetPointQuery,
   useGetUserIPQuery,
+  useGetNewsByIdQuery,
   util: { getRunningQueriesThunk },
 } = MaLabApi;
 
@@ -84,4 +88,5 @@ export const {
   getProject,
   getPoint,
   getUserIP,
+  getNewsById,
 } = MaLabApi.endpoints;

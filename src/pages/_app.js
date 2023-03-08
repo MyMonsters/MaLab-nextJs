@@ -19,14 +19,14 @@ const app = appWithTranslation(({ Component, pageProps }) => {
     <div>
       <Component {...pageProps} />
       {/* <Pokemon /> */}
-      <Header />
+      {/* <Header />
       <Home />
       <About />
       <News />
       <Team />
       <Project />
       <Publication />
-      <Footer />
+      <Footer /> */}
     </div>
   );
 }, nextI18NextConfig);

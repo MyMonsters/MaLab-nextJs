@@ -7,8 +7,8 @@ const Home = memo(function Home() {
   const { t } = useTranslation('common');
 
   return (
-    <HomeWrapper>
-      <div id="home">
+    <HomeWrapper id="home">
+      <div>
         <Image
           src="/home.png"
           loader={myLoader}

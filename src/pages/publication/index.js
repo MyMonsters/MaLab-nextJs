@@ -14,7 +14,7 @@ const Publication = memo(function Publication() {
   // const publication = data.data.reverse();
 
   return (
-    <PublicationWrapper>
+    <PublicationWrapper id="publications">
       <h2 className="title">{t('publications')}</h2>
       {isLoading
         ? '加载中'

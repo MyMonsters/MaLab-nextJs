@@ -1,4 +1,4 @@
-import React, { memo, useRef, useState } from 'react';
+import React, { memo, useRef } from 'react';
 
 // 引入 ECharts 主模块
 import '@/common/world';
@@ -11,13 +11,12 @@ import ReactECharts from 'echarts-for-react';
 // import 'echarts/lib/component/tooltip';
 // import 'echarts/lib/component/title';
 import { MymapWrapper } from './style';
-import { useGetPointQuery } from '@/lib/MaLabApi';
+import { useGetPointQuery, useGetUserIPQuery } from '@/lib/MaLabApi';
 import Image from 'next/image';
 
 const Mymap = memo(function Mymap() {
   const myRef = useRef(null);
   const echarts = require('echarts');
-
   const chart = echarts.init(null, null, {
     renderer: 'svg', // 必须使用 SVG 模式
     ssr: true, // 开启 SSR
@@ -25,8 +24,17 @@ const Mymap = memo(function Mymap() {
     height: 300,
   });
   const { data, err, isLoading } = useGetPointQuery();
+  const {
+    data: pvdata,
+    err: pverr,
+    isLoading: pvLoading,
+  } = useGetUserIPQuery();
   let series = [];
-  // const [svgStr, setsvgStr] = useState('');
+
+  let pv = 0;
+  if (!pvLoading) {
+    pv = pvdata.pv;
+  }
   const initSeris = () => {
     series = data.data.map((item, index) => {
       return {
@@ -63,7 +71,6 @@ const Mymap = memo(function Mymap() {
       };
     });
     chart.setOption({ series: series });
-    svgStr = chart.renderToSVGString();
   };
 
   // initSeris();
@@ -113,17 +120,22 @@ const Mymap = memo(function Mymap() {
     series: series,
   };
 
-  let svgStr = chart.renderToSVGString();
-
   return (
     <MymapWrapper>
       <div ref={myRef} id="map">
+        <div style={{ textAlign: 'center' }}>
+          <span>{pv}</span> Total PageViews
+        </div>
         {/* {isLoading ? (
           '加载中'
         ) : (
           <img src={`data:image/svg+xml;utf8,${encodeURIComponent(svgStr)}`} />
         )} */}
-        <ReactECharts option={options} />;{/* {isLoading ? '' : initSeris()} */}
+        <ReactECharts
+          option={options}
+          style={{ width: '400px', height: '200px' }}
+        />
+        {/* {isLoading ? '' : initSeris()} */}
       </div>
     </MymapWrapper>
   );

@@ -39,8 +39,8 @@ const Footer = memo(function Footer() {
             渝ICP备2022013486号-1
           </a>
         </div>
-        <Mymap />
       </div>
+      <Mymap />
     </FooterWrapper>
   );
 });
