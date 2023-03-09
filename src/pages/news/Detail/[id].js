@@ -1,4 +1,6 @@
 import { useGetNewsByIdQuery } from '@/lib/MaLabApi';
+import { myLoader } from '@/utils/loader';
+import Image from 'next/image';
 
 import { useRouter } from 'next/router';
 import React, { memo } from 'react';
@@ -43,9 +45,15 @@ const detail = memo(function Detail(props) {
       </div>
       <hr style={{ width: '80%' }} />
       <div className="img-container">
-        <img
+        {/* <img
           src={isLoading ? '' : data.data[0].image}
           style={{ width: '30%', marginLeft: '35%' }}
+          alt=""
+        /> */}
+        <Image
+          style={{ width: '30%', marginLeft: '35%' }}
+          loader={myLoader}
+          src="n2.jpg"
           alt=""
         />
         {/* <img :src="NewsInfo.image" alt="" style="width: 30%" /> */}
