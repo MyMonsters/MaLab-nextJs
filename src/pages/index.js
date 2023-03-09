@@ -24,7 +24,7 @@ export default function Home(props) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main>
+      <main className="main">
         <Header />
         <MyHome />
         <About />

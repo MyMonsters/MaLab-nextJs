@@ -1,12 +1,29 @@
-import React, { memo, useState } from 'react';
+import React, { memo, useRef, useState } from 'react';
 import { HeaderLeft, HeaderRight, HeaderWrapper } from './style';
 import Link from 'next/link';
 import { headerLinks } from '@/common/local-data';
-import { Dropdown } from 'antd';
+import { Dropdown, FloatButton } from 'antd';
 import { useTranslation } from 'next-i18next';
 const Header = memo(function Header() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const { t, i18n } = useTranslation();
+  let mode = 'light';
+  const handleChangeMode = () => {
+    console.log('运行了一次');
+    if (mode === 'light') {
+      console.log('light');
+      document.getElementsByClassName('main')[0].classList.add('dark-mode');
+      console.log(document.getElementsByClassName('main')[0].classList);
+      mode = 'dark';
+    } else {
+      console.log('dark');
+      console.log(
+        document.getElementsByClassName('main')[0].classList.remove('dark-mode')
+      );
+      console.log(document.getElementsByClassName('main')[0].classList);
+      mode = 'light';
+    }
+  };
   const handleChangeLan = () => {
     if (i18n.language === 'en') {
       i18n.changeLanguage('zh');
@@ -222,7 +239,6 @@ const Header = memo(function Header() {
             <a onClick={(e) => e.preventDefault()}>
               <svg
                 t="1678281668751"
-                class="icon"
                 viewBox="0 0 1024 1024"
                 version="1.1"
                 xmlns="http://www.w3.org/2000/svg"
@@ -271,14 +287,12 @@ const Header = memo(function Header() {
             ></path>
           </svg>
         </div>
-        <div style={{ display: 'flex', alignItems: 'center' }}>
+        <div
+          style={{ display: 'flex', alignItems: 'center' }}
+          onClick={(e) => handleChangeMode()}
+        >
           <label style={{ marginBottom: '0' }}>
-            <input
-              className="toggle-checkbox"
-              type="checkbox"
-              v-model="mode"
-              value="light"
-            />
+            {/* <input className="toggle-checkbox" type="checkbox" /> */}
             <div className="toggle-slot">
               <div className="sun-icon-wrapper">
                 <svg
@@ -334,6 +348,7 @@ const Header = memo(function Header() {
           </label>
         </div>
       </HeaderRight>
+      <FloatButton.BackTop />
     </HeaderWrapper>
     // </Affix>
   );

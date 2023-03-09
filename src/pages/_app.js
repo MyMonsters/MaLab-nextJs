@@ -8,6 +8,7 @@ import Team from './team';
 import nextI18NextConfig from '../../next-i18next.config';
 import { appWithTranslation } from 'next-i18next';
 import App from 'next/app';
+import '@/styles/globals.css';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 

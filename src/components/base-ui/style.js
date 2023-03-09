@@ -11,6 +11,9 @@ export const ShowTeamWrapper = styled.div`
     text-align: center;
     line-height: 1.4;
   }
+  .CoPI-wrapper {
+    color: black;
+  }
   img {
     border: solid 2px;
     border-bottom-color: #ffe;

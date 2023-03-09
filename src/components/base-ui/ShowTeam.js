@@ -20,31 +20,33 @@ export default memo(function ShowTeam(props) {
           if (title === 'Co-PI') {
             return (
               <Col xs={24} md={12} lg={6} key={item.id}>
-                <div className="img-container">
-                  <Image
-                    loader={myLoader}
-                    loading="lazy"
-                    width={100}
-                    height={100}
-                    src="ma.jpg"
-                    className="img"
-                    style={{
-                      width: '100%',
-                      height: 'auto',
-                    }}
-                    alt=""
-                  />
-                </div>
+                <a href={item.path} className="CoPI-wrapper" target={'_blank'}>
+                  <div className="img-container">
+                    <Image
+                      loader={myLoader}
+                      loading="lazy"
+                      width={100}
+                      height={100}
+                      src="ma.jpg"
+                      className="img"
+                      style={{
+                        width: '100%',
+                        height: 'auto',
+                      }}
+                      alt=""
+                    />
+                  </div>
 
-                <div className="my-text">
-                  {i18n.language === 'en' ? item.ENname : item.CNname}
-                </div>
-                <div className="my-text">
-                  {i18n.language === 'en' ? item.ENmajor : item.CNmajor}
-                </div>
-                <div className="my-text">
-                  {i18n.language === 'en' ? item.ENinterest : item.CNinterest}
-                </div>
+                  <div className="my-text">
+                    {i18n.language === 'en' ? item.ENname : item.CNname}
+                  </div>
+                  <div className="my-text">
+                    {i18n.language === 'en' ? item.ENmajor : item.CNmajor}
+                  </div>
+                  <div className="my-text">
+                    {i18n.language === 'en' ? item.ENinterest : item.CNinterest}
+                  </div>
+                </a>
               </Col>
             );
           } else {

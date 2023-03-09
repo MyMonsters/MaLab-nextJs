@@ -167,10 +167,6 @@ export const HeaderRight = styled.div`
     color: wheat !important;
     width: 100%;
   }
-  .dark-mode {
-    background-color: #2f2f2f !important;
-    color: rgb(177, 168, 168) !important;
-  }
 
   /* .ant-affix {
     font-size: large;
