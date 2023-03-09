@@ -26,3 +26,4 @@ export const DetailWrapper = styled.div`
     justify-content: center;
   }
 `;
+export  default DetailWrapper

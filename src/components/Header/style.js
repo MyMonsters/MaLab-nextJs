@@ -179,3 +179,4 @@ export const HeaderRight = styled.div`
     font-size: 18px;
   } */
 `;
+export default HeaderWrapper;

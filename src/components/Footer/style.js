@@ -58,3 +58,4 @@ export const FooterWrapper = styled.div`
     /* word-break: break-all; */
   }
 `;
+export default FooterWrapper;

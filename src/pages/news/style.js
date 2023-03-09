@@ -54,3 +54,4 @@ export const NewsWrapper = styled.div`
     margin-top: 4%;
   }
 `;
+export default NewsWrapper;

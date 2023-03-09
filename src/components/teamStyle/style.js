@@ -38,3 +38,4 @@ export const TeamStyleWrapper = styled.div`
     content: '';
   }
 `;
+export default TeamStyleWrapper;

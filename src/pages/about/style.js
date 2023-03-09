@@ -40,3 +40,5 @@ export const AboutRightWrapper = styled.div`
   /* padding: 1rem; */
   white-space: pre-wrap;
 `;
+
+export default AboutWrapper;

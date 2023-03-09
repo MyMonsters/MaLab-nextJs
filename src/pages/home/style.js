@@ -6,3 +6,4 @@ export const HomeWrapper = styled.div`
     position: static;
   } */
 `;
+export default HomeWrapper;

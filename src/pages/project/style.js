@@ -69,3 +69,5 @@ export const ProjectWrapper = styled.div`
     margin-inline-start: 80px;
   }
 `;
+
+export default ProjectWrapper;

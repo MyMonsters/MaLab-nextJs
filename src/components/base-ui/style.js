@@ -61,3 +61,4 @@ export const ShowTeamWrapper = styled.div`
     top: -2.5vmin;
   }
 `;
+export default ShowTeamWrapper;

@@ -13,3 +13,4 @@ export const PublicationWrapper = styled.div`
     font-weight: 400;
   }
 `;
+export default PublicationWrapper;

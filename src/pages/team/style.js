@@ -1,3 +1,4 @@
+import TeamStyleWrapper from '@/components/teamStyle/style';
 import styled from 'styled-components';
 export const TeamWrapper = styled.div`
   margin: 0 5rem;
@@ -72,3 +73,4 @@ export const TeamWrapper = styled.div`
     line-height: 1.4;
   }
 `;
+export default TeamStyleWrapper;
