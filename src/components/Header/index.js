@@ -1,4 +1,4 @@
-import React, { memo, useRef, useState } from 'react';
+import React, { memo, useEffect, useRef, useState } from 'react';
 import { HeaderLeft, HeaderRight, HeaderWrapper } from './style';
 import Link from 'next/link';
 import { headerLinks } from '@/common/local-data';
@@ -7,21 +7,32 @@ import { useTranslation } from 'next-i18next';
 const Header = memo(function Header() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const { t, i18n } = useTranslation();
-  let mode = 'light';
-  const handleChangeMode = () => {
-    console.log('运行了一次');
-    if (mode === 'light') {
-      console.log('light');
+  const [mode, setmode] = useState('light');
+  // useEffect(() => {
+  //   if (mode === 'light') {
+  //     console.log('light');
+  //     document.getElementsByClassName('main')[0].classList.add('dark-mode');
+  //     console.log(document.getElementsByClassName('main')[0].classList);
+  //     setmode('dark');
+  //   } else {
+  //     console.log('dark');
+  //     console.log(
+  //       document.getElementsByClassName('main')[0].classList.remove('dark-mode')
+  //     );
+  //     console.log(document.getElementsByClassName('main')[0].classList);
+  //     setmode('light');
+  //   }
+  // }, [mode]);
+  const handleChangeMode = (value) => {
+    console.log('运行了一次', value);
+    if (value === 'light') {
       document.getElementsByClassName('main')[0].classList.add('dark-mode');
-      console.log(document.getElementsByClassName('main')[0].classList);
-      mode = 'dark';
+      // mode = 'dark';
+      setmode('dark');
     } else {
       console.log('dark');
-      console.log(
-        document.getElementsByClassName('main')[0].classList.remove('dark-mode')
-      );
-      console.log(document.getElementsByClassName('main')[0].classList);
-      mode = 'light';
+      document.getElementsByClassName('main')[0].classList.remove('dark-mode');
+      setmode('light');
     }
   };
   const handleChangeLan = () => {
@@ -287,11 +298,14 @@ const Header = memo(function Header() {
             ></path>
           </svg>
         </div>
-        <div
-          style={{ display: 'flex', alignItems: 'center' }}
-          onClick={(e) => handleChangeMode()}
-        >
+        <div style={{ display: 'flex', alignItems: 'center' }}>
           <label style={{ marginBottom: '0' }}>
+            <input
+              className="toggle-checkbox"
+              type="checkbox"
+              value={mode}
+              onChange={(e) => handleChangeMode(e.target.value)}
+            />
             {/* <input className="toggle-checkbox" type="checkbox" /> */}
             <div className="toggle-slot">
               <div className="sun-icon-wrapper">
